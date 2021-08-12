@@ -1,20 +1,22 @@
 #!/bin/sh
 
-#date variable to show in bar
 dte(){
-	dte="$(date "+%a %b %d,%Y %I:%M %p %Z")"
-	echo -e "$dte"
+	dte="$(date "+%b %d,%Y %I:%M %p %Z")"
+	echo -e "🗓️  $dte"
 }
 
-#battery status for laptops
 battery(){
 	battery="$(cat /sys/class/power_supply/BAT0/capacity)%"
-	echo -e "Bat: $battery"
+	echo -e "🔋 $battery"
 }
 
+weather(){
+       weather="$(curl wttr.in/?format=%t)"
+       echo -e "🌡 $weather"
+}
 
 while true; do
-        xsetroot -name "$(dte) | $(battery)"
+        xsetroot -name "$(weather) | $(dte) | $(battery)"
         sleep 1m # update time every minute
 done &
 
