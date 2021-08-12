@@ -1,10 +1,12 @@
 #!/bin/sh
 
+#date variable to show in bar
 dte(){
 	dte="$(date "+%a %b %d,%Y %I:%M %p %Z")"
-	echo -e " $dte"
+	echo -e "$dte"
 }
 
+#battery status for laptops
 battery(){
 	battery="$(cat /sys/class/power_supply/BAT0/capacity)%"
 	echo -e "Bat: $battery"
