@@ -11,7 +11,7 @@ battery(){
 }
 
 weather(){
-       weather="$(curl wttr.in/?format=%t)"
+       weather="$(curl -s 'wttr.in/?format=%t')"
        echo -e "🌡 $weather"
 }
 
